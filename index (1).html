@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Audit - Get Started Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .hero-cta:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .benefit-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.85rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-payment {
+            background: #ff6b6b;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-payment:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-payment:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0 0 0;
+        }
+
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .form-section {
+                padding: 0 1rem;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🚀 AuditPro</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#form">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Free Audit for Just ₹1</h1>
+            <p>Get a comprehensive audit of your business and unlock growth opportunities. Limited time offer!</p>
+            <button class="hero-cta" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'})">
+                Start Free Audit
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose Our Audit?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Comprehensive Analysis</h3>
+                <p>Deep dive into your business metrics and identify key areas for improvement.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Expert Review</h3>
+                <p>Get insights from industry experts with years of experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick Turnaround</h3>
+                <p>Receive your detailed audit report within 48 hours.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Actionable Insights</h3>
+                <p>Get specific recommendations you can implement immediately.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>Personalized Report</h3>
+                <p>Customized audit tailored to your industry and business size.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Confidential</h3>
+                <p>Your data is secure and handled with complete confidentiality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-container">
+            <h2 class="section-title">What You'll Get</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>✓ Business Analysis</h4>
+                    <p>Detailed analysis of your current business operations and performance metrics.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✓ Growth Opportunities</h4>
+                    <p>Identify untapped opportunities to scale your business faster.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✓ Cost Optimization</h4>
+                    <p>Find areas where you can reduce costs without compromising quality.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✓ Compliance Check</h4>
+                    <p>Ensure your business meets all regulatory and compliance requirements.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✓ Risk Assessment</h4>
+                    <p>Identify potential risks and get mitigation strategies.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✓ Strategy Roadmap</h4>
+                    <p>Get a clear roadmap for the next 12 months of growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="form-container">
+            <h2 class="form-title">Get Your Free Audit</h2>
+            <p class="form-subtitle">Fill in your details and proceed to payment. Only ₹1 for a complete audit!</p>
+            
+            <div id="message" class="message"></div>
+
+            <form id="auditForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="John Doe" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="john@example.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+91 9876543210" 
+                        required
+                    >
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit" id="submitBtn">
+                        <span id="submitText">Save & Continue</span>
+                    </button>
+                    <a href="https://payments.cashfree.com/forms/getaudit" class="btn btn-payment" id="paymentBtn" style="display: none;">
+                        💳 Pay ₹1 Now
+                    </a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Don't Miss This Opportunity</h2>
+            <p>Join hundreds of businesses that have transformed with our audit insights</p>
+            <button class="hero-cta" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'})">
+                Get Your Free Audit Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AuditPro. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script>
+        // AppScript URL - Connected to Google Sheets
+        const APPSCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXVaFKsfGKaffls8n3bnmcNPb0KnPu43fCj2oq77qtkCao-gWk_txM6IoTTAiDk3Ni/exec";
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            // Validate inputs
+            if (!name || !email || !phone) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            submitBtn.disabled = true;
+            submitText.innerHTML = '<span class="spinner"></span> Saving...';
+
+            // Build URL with query parameters
+            const params = new URLSearchParams({
+                name: name,
+                email: email,
+                phone: phone
+            });
+
+            const url = APPSCRIPT_URL + "?" + params.toString();
+
+            // Send data using GET with no-cors mode
+            fetch(url, {
+                method: "GET",
+                mode: "no-cors"
+            })
+            .then(() => {
+                // Success - show payment button
+                showMessage('✓ Your details have been saved! Proceed to payment.', 'success');
+                document.getElementById('submitBtn').style.display = 'none';
+                document.getElementById('paymentBtn').style.display = 'flex';
+                
+                // Disable form inputs
+                document.getElementById('name').disabled = true;
+                document.getElementById('email').disabled = true;
+                document.getElementById('phone').disabled = true;
+            })
+            .catch(() => {
+                // Error handling
+                showMessage('Error saving data. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Save & Continue';
+            });
+        }
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = 'message ' + type;
+            
+            // Auto-hide error messages after 5 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageEl.className = 'message';
+                }, 5000);
+            }
+        }
+
+        // Prevent form submission on Enter key in inputs
+        document.getElementById('name').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('email').focus();
+            }
+        });
+
+        document.getElementById('email').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('phone').focus();
+            }
+        });
+
+        document.getElementById('phone').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleFormSubmit(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
